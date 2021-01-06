@@ -52,7 +52,7 @@ class _BatteryInfoState extends State<BatteryInfo> {
       backgroundColor: kBoxColor,
       appBar: AppBar(
         backgroundColor: kBoxColor,
-        elevation: 0,
+        elevation: 4,
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Container(

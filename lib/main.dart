@@ -23,6 +23,17 @@ class MyApp extends StatelessWidget {
       child: Scaffold(
           backgroundColor: kBoxColor,
           appBar: AppBar(
+            shadowColor: kFontBlack,
+            centerTitle: true,
+            title: Text(
+              'CPU-X',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                  fontFamily: 'Bahnschrift',
+                  color: kFontBlack,
+                  fontSize: 42,
+                  fontWeight: FontWeight.w300),
+            ),
             backgroundColor: kBoxColor,
             bottom: TabBar(
                 indicatorWeight: 5,
@@ -32,8 +43,20 @@ class MyApp extends StatelessWidget {
                 labelPadding: EdgeInsets.all(10),
                 labelColor: kCyan,
                 tabs: <Widget>[
-                  Icon(Icons.apps, size: 40, color: Colors.black),
-                  Icon(Icons.mobile_friendly, size: 40, color: Colors.black)
+                  Text(
+                    'Services',
+                    style: TextStyle(
+                        color: kFontBlack,
+                        fontSize: 24,
+                        fontFamily: 'Lato-Black'),
+                  ),
+                  Text(
+                    'Info',
+                    style: TextStyle(
+                        color: kFontBlack,
+                        fontSize: 24,
+                        fontFamily: 'Lato-Black'),
+                  ),
                 ]),
           ),
           body: TabBarView(

@@ -56,7 +56,7 @@ class _CPUInfoState extends State<CPUInfo> {
       backgroundColor: kBoxColor,
       appBar: AppBar(
         backgroundColor: kBoxColor,
-        elevation: 0,
+        elevation: 4,
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Container(
@@ -77,6 +77,7 @@ class _CPUInfoState extends State<CPUInfo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          SizedBox(height: 10),
           Expanded(
               flex: 1,
               child: Text(

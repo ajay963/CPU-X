@@ -68,7 +68,7 @@ class _MemoryInfoState extends State<MemoryInfo> {
             color: Colors.black,
           ),
           backgroundColor: kBoxColor,
-          elevation: 0),
+          elevation: 4),
       body: Container(
         child: _memoryInfo.isEmpty
             ? Center(child: CircularProgressIndicator())
@@ -81,49 +81,57 @@ class _MemoryInfoState extends State<MemoryInfo> {
     return Container(
       color: kBoxColor,
       // padding: EdgeInsets.only(top: 20, left: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: LatoTxt(
-                txt: ' Memory Info',
-                fontFamily: 'Bahnschrift',
-                size: 48,
-                color: Colors.black),
+      child: SingleChildScrollView(
+        physics: ScrollPhysics(),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 10),
+              Expanded(
+                flex: 1,
+                child: LatoTxt(
+                    txt: ' Memory Info',
+                    fontFamily: 'Bahnschrift',
+                    size: 48,
+                    color: Colors.black),
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  height: 350,
+                  width: 350,
+                  child: FlareActing(artBordNO: 2),
+                ),
+              ),
+              Expanded(
+                flex: 6,
+                child: Column(
+                  children: [
+                    GetMemoryChart(
+                        memoryType: 'Internal',
+                        totalMemory: totalInternalMemorySize.toInt(),
+                        freeMemory: availableInternalMemorySize.toInt(),
+                        percent: internaMemoryRatio),
+                    SizedBox(height: 20),
+                    //if external Avaulable
+                    (availableExternalMemorySize != availableInternalMemorySize)
+                        ? GetMemoryChart(
+                            memoryType: 'External',
+                            totalMemory: totalExternalMemorySize.toInt(),
+                            freeMemory: availableExternalMemorySize.toInt(),
+                            percent: externaMemoryRatio)
+                        : SizedBox(
+                            height: 10,
+                          ),
+                  ],
+                ),
+              )
+            ],
           ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              height: 350,
-              width: 350,
-              child: FlareActing(artBordNO: 2),
-            ),
-          ),
-          Expanded(
-            flex: 6,
-            child: ListView(
-              children: [
-                GetMemoryChart(
-                    memoryType: 'Internal',
-                    totalMemory: totalInternalMemorySize.toInt(),
-                    freeMemory: availableInternalMemorySize.toInt(),
-                    percent: internaMemoryRatio),
-                SizedBox(height: 20),
-                //if external Avaulable
-                (availableExternalMemorySize != availableInternalMemorySize)
-                    ? GetMemoryChart(
-                        memoryType: 'External',
-                        totalMemory: totalExternalMemorySize.toInt(),
-                        freeMemory: availableExternalMemorySize.toInt(),
-                        percent: externaMemoryRatio)
-                    : SizedBox(
-                        height: 10,
-                      ),
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
