@@ -3,6 +3,7 @@
 All system info 
 
 ## Getting Started
+<img src="assets/MockupsCPU-50.jpg">
 
 This project is a starting point for a Flutter application.
 
